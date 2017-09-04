@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Object.getOwnPropertyDescriptor()方法，取得给定属性的描述符</title>
+</head>
+<body>
+<script type="text/javascript">
+  var book = {};
+
+  Object.defineProperties(book, {
+    _year: {value: 2004},
+
+    edition: {
+      value: 1
+    },
+
+    year: {
+      get: function () {
+        return this._year;
+      },
+      set: function (newValue) {
+        if (newValue > 2004) {
+          this._year = newValue;
+          this.edition += newValue - 2004;
+        }
+      }
+    }
+  });
+
+  var descriptor1 = Object.getOwnPropertyDescriptor(book, "_year");
+  var descriptor2 = Object.getOwnPropertyDescriptor(book, "edition");
+  var descriptor3 = Object.getOwnPropertyDescriptor(book, "year");
+</script>
+</body>
+</html>

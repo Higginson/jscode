@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>构造函数模式</title>
+</head>
+<body>
+<script type="text/javascript">
+  function Person(name, age, job) {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function () {
+      alert(this.name);
+    };
+  }
+
+  //当做构造函数使用
+  var person1 = new Person("higginson", 23, "software engineer");
+  var person2 = new Person("higginson", 23, "software engineer");
+  person1.sayName();
+  person2.sayName();
+
+  //当做普通函数使用
+  Person("grep", 29, "Doctor");
+  window.sayName();
+
+  //在另一个对的作用域中调用
+  var o = new Object();
+  Person.call(o, "Kristen", 23, "Nurse");
+  o.sayName();
+
+</script>
+</body>
+</html>

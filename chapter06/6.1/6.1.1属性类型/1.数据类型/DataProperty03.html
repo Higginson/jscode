@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Object.defineProperty()修改默认特性——修改为不可配置后，就不能变回可配置</title>
+</head>
+<body>
+<script type="text/javascript">
+
+  var person = {};
+  Object.defineProperty(person, "name", {
+    configurable: false,
+    value: "higginson"
+  });
+
+  Object.defineProperty(person, "name", {//浏览器报错Cannot redefine property: name
+    configurable: true,
+    value: "grep"
+  });
+
+  alert(person.name);
+
+</script>
+</body>
+</html>
